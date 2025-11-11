@@ -74,7 +74,7 @@ main {
 
 /* ===== Card Wrapper ===== */
 .tts-wrapper {
-    width: 1000px;
+    width: 800px;
     max-width: 95%;
     padding: 56px 48px;
     text-align: center;
@@ -153,7 +153,7 @@ button:active {
 .footer {
     text-align: center;
     padding: 18px;
-    font-size: 18px;
+    font-size: 15px;
     color: #fff;
     background: rgba(96, 95, 95, 0.186);
     backdrop-filter: blur(10px);
