@@ -23,7 +23,7 @@
 
         <!-- MAIN TTS CARD -->
         <div class="tts-wrapper glass">
-            <h2>🔊 Apps Pemanggilan Pasien</h2>
+            <h2>🔊 Patient Calling System</h2>
 
             <textarea id="ttsText" placeholder="Ketik teks yang ingin diubah menjadi suara..."></textarea>
 

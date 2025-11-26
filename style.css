@@ -197,7 +197,7 @@ button:hover {
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;
-    padding: 18px;
+    padding: 10px;
     font-size: 15px;
     color: #fff;
     background: rgba(96, 95, 95, 0.186);
@@ -208,5 +208,4 @@ button:hover {
     color: #fff;
     font-size: 15px;
     text-decoration: none;
-    
 }
