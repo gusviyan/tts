@@ -44,7 +44,7 @@ const textArea = document.getElementById('ttsText');
 const btnSpeak = document.getElementById('generateBtn');
 const btnClear = document.getElementById('clearBtn');
 
-// Tombol Play
+// Tombol "Dengarkan"
 btnSpeak.addEventListener('click', () => {
     const text = textArea.value.trim();
     if (!text) {
@@ -58,25 +58,41 @@ btnSpeak.addEventListener('click', () => {
     const voices = synth.getVoices();
     let selectedVoice = voices.find(v => v.lang === "id-ID" && v.name.toLowerCase().includes("female"));
     if (!selectedVoice) selectedVoice = voices.find(v => v.lang === "id-ID") || voices[0];
-
     utter.voice = selectedVoice;
 
     synth.cancel();
     synth.speak(utter);
 });
 
-// Clear
+// Tombol "Clear Text"
 btnClear.addEventListener('click', () => {
     synth.cancel();
     textArea.value = "";
     textArea.focus();
 });
 
-// Notice Dismiss
-document.getElementById('dismissNotice').addEventListener('click', () => {
-    document.getElementById('browserNotice').style.display = 'none';
+// 🔠 Ubah teks yang di-paste menjadi lowercase
+textArea.addEventListener('paste', (event) => {
+    event.preventDefault(); // cegah paste default
+    const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+    const lowercaseText = pastedText.toLowerCase();
+    
+    // Masukkan teks ke posisi kursor
+    const start = textArea.selectionStart;
+    const end = textArea.selectionEnd;
+    const currentValue = textArea.value;
+    textArea.value = currentValue.slice(0, start) + lowercaseText + currentValue.slice(end);
+    
+    // Kembalikan fokus ke posisi setelah teks yang di-paste
+    textArea.selectionStart = textArea.selectionEnd = start + lowercaseText.length;
 });
+
+// Load suara
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = () => {};
+}
 </script>
+
 
 </body>
 </html>
